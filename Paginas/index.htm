@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--jquery--><script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="../Scripts/jq.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="../Estilos/estilo.css">
+</head>
+<body>
+	<img src="../Imagenes/chaca.png" width="100%" height="197">
+	<main>
+		<article>
+			<div class="container">
+				<div class="row">
+					<div class="input-field s6">
+						<h1 class="titulo">WIKIPEDIA DEL COLEGIO TÉCNICO N°6 -CHACABUCO-</h1><br>
+						<form method="POST" action="../PHP/log_in.php">
+							<label>Tipo de documento </label>
+							<select class="browser-default waves-effect waves-light" id="tipo_documento" name="tipo_documento" required>
+								<!--onchange="rango_documento(document.getElementById('tipo_documento').value,'documento')"-->
+								<option value="">Seleccione un tipo de documento</option>
+								<option value="DNI">DNI</option>
+								<option value="LC">LC</option>
+								<option value="LE">LE</option>
+							</select><br>
+							<label>Número de documento</label>
+							<input type="number" id="numero_documento" name="numero_documento" max="9999999999" min="1" required><br>
+							<label>Contraseña </label>
+							<input type="password" id="contraseña" name="contraseña" required><br><br>
+							<button type="submit">Ingresar</button> <button type="reset">Borrar datos</button><br>
+							<a href="../Paginas/FormularioDeInscripcion.htm" target="blank">Si todavía no está registrado haga clic Aquí</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</article>
+	</main>
+	<footer class="page-footer black darken-3">
+		<div class="container">
+			<hr size="3">
+			<div>División 7° 4° año 2018<br>Proyecto de implementación de sitios web dinámicos<br>Autores:...</div>
+		</div>
+	</footer>
+</body>
+</html>

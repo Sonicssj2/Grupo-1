@@ -1,0 +1,57 @@
+body{
+	background-color: #AED581;
+}
+img{
+	border-color: black;
+	border-radius: 1;
+	margin: 0 auto;
+}
+
+form{
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 2em;		
+	text-align: center;
+	padding: 60px;
+ 	max-width: 400px;
+  	background-color: #E0E0E0;
+ 	margin: 0 auto;
+}
+select{
+	border-color: black;
+}
+input{
+	border-color: black;
+}
+button{
+	border-color: black;
+	border-radius: 2em;
+}
+footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.titulo{
+	background-color: #9CCC65;
+	color: white;
+	text-align: center;
+	border-color: black;
+	border-radius: 2em;
+	font-family: Helvetica;
+
+}
+.espacio{
+	letter-spacing: 3px;
+}
+.doble{
+	height: 2px;
+	background-color: white;
+	border: 2px solid green;
+	outline: 2px solid black;
+}
+#matv{
+	color: green;
+}

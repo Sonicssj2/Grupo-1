@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="../Scripts/script.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="../Estilos/estilo.css">
+</head>
+<body>
+	<img src="../Imagenes/chaca.png" width="100%" height="197">
+	<main>
+		<article>
+			<div class="container">
+				<div class="row">
+					<div class="input-field s6" on>	
+						<h1 align="center">Formulario de inscripción</h1>
+						<form method="POST" action="../PHP/sign_in.php">
+							<label>Nombre </label><input type="text" id="nombre" name="nombre" maxlength="20" required oninput="valida_texto('nombre')"><br>
+							<label>Apellido </label><input type="text" id="apellido" name="apellido" maxlength="20" required oninput="valida_texto('apellido')"><br>
+							<label>Tipo de documento </label><select class="browser-default waves-effect waves-light" id="tipo_documento" name="tipo_documento" onchange="rango_documento(document.getElementById('tipo_documento').value,'numero_documento')" required>
+								<option value="">Seleccione un tipo de documento</option>
+								<option value="DNI">DNI</option>
+								<option value="LC">LC</option>
+								<option value="LE">LE</option>
+							</select><br>
+							<label>Número de documento </label><input type="number" id="numero_documento" name="numero_documento" max="9999999999" min="1" required><br>
+							<label>Contraseña </label>
+							<input type="password" id="contraseña" name="contraseña" required><br><br>
+							<label>Curso </label><select class="browser-default waves-effect waves-light" id="curso" name="curso" required>
+								<option value="">Seleccione un curso</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select><br>
+							<label>División </label><select class="browser-default waves-effect waves-light" id="division" name="division" required>
+								<option value="">Seleccione una división</option>
+								<option value="1°">1°</option>
+								<option value="2°">2°</option>
+								<option value="3°">3°</option>
+								<option value="4°">4°</option>
+								<option value="5°">5°</option>
+								<option value="6°">6°</option>
+							</select><br>
+							<label>Dirección de mail </label><input type="email" id="email" name="email" maxlength="100" required><br><br>
+							<button type="submit">Registrar</button> <button type="reset">Borrar datos</button><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</article>
+	</main>
+	<footer class="page-footer black darken-3">
+		<div class="container">
+			<hr size="3">
+			<div>División 7° 4° año 2018<br>Proyecto de implementación de sitios web dinámicos<br>Autores:...</div>
+		</div>
+	</footer>
+</body>
+</html>
