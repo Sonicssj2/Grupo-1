@@ -1,8 +1,20 @@
 <?php
 
+require 'functions.php';//funciones
+
+//variables
+$nombre=$_POST['nombre'];
+$apellido=$_POST['apellido'];
+$tipo_documento=$_POST['tipo_documento'];
+$numero_documento=$_POST['numero_documento'];
+$contraseña=$_POST['contraseña'];
+$curso=$_POST['curso'];
+$division=$_POST['division'];
+$email=$_POST['email'];
+
 //codigo sql
-$sel='SELECT numero_documento FROM usuarios WHERE numero_documento='.$_POST['numero_documento'];
-$ins='INSERT INTO usuarios VALUES("","'.$_POST['nombre'].'","'.$_POST['apellido'].'","'.$_POST['tipo_documento'].'",'.$_POST['numero_documento'].',"'.$_POST['contraseña'].'",'.$_POST['curso'].',"'.$_POST['division'].'","'.$_POST['email'].'")';
+$sel=selectw("numero_documento","usuarios","numero_documento",$_POST['numero_documento'],false);
+$ins=insert("usuarios","'','$nombre','$apellido','$tipo_documento',$numero_documento,'$contraseña',$curso,'$division','$email'");
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');

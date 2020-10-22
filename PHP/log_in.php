@@ -1,7 +1,9 @@
 <?php
 
+require 'functions.php';//funciones
+
 //codigo sql
-$sql='SELECT contraseña FROM usuarios WHERE numero_documento='.$_POST['numero_documento'];
+$sql=selectw("contraseña","usuarios","numero_documento",$_POST['numero_documento'],false);
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');
