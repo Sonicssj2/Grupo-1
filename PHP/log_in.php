@@ -16,18 +16,18 @@ mysqli_close($link);
 $contraseña=mysqli_fetch_row($rs);
 
 //verifica que la contraseña del usuario ingresado es correcta
-if ($contraseña!=null) {
-	if ($contraseña[0]==$_POST['contraseña']) {
+if($contraseña!=null){
+	if($contraseña[0]==$_POST['contraseña']){
 		header('location:Materia.php');
 	}
-	else {
+	else{
 		echo '
 			<p align="center">Error al validar la contraseña</p>
 			<a href="../Paginas/index.htm">Volver</a>
 		';
 	}
 }
-else {
+else{
 	echo '
 		<p align="center">No se encuentra el usuiario</p>
 		<a href="../Paginas/index.htm">Volver</a>

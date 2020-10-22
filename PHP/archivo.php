@@ -15,8 +15,6 @@ if($replace=="true"){
 	$target=$_SESSION['target'];
 	$fl=$_SESSION['fl'];
 	$tipo_archivo=$_SESSION['tipo_archivo'];
-	
-	echo 'entre a replace true';
 }
 else{
 	$info=pathinfo($_FILES['archivo']['name']);
@@ -35,14 +33,13 @@ else{
 	$_SESSION['target']=$target;
 	$_SESSION['fl']=$fl;
 	$_SESSION['tipo_archivo']=$tipo_archivo;
-
-	echo 'entre a replace false';
 }
+var_dump($fl,$target);
 
 //código sql
 $sel="SELECT ruta FROM archivos WHERE ruta LIKE '$target'";
 $ins="INSERT INTO archivos VALUES('','$target','$name','$tipo_archivo')";
-$upd="UPDATE archivos SET ruta='$target',nombre='$name',tipo_archivo='$tipo_archivo' WHERE ruta LIKE '$target'";
+$upd="UPDATE archivos SET tipo_archivo='$tipo_archivo' WHERE ruta LIKE '$target'";
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');
@@ -74,12 +71,10 @@ else{
 		$rs=mysqli_query($link,$upd);//ejecuta query de UPDATE
 		mysqli_close($link);//cierre de conexión
 		if($rs){
-			#mysqli_free_result($rs);
 			move_uploaded_file($fl, $target);//guarda el archivo en la ruta especificada
 			echo '<p align="center">Archivo actualizado correctamente</p>';
 		}
 		else{
-			#mysqli_free_result($rs);
 			echo '<p align="center">Error al actualizar archivo</p>';
 		}
 		echo '<a href="Materia.php">Volver</a>';
