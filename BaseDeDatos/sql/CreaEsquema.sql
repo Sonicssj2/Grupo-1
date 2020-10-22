@@ -1,4 +1,4 @@
-drop database IF EXISTS chacawiki;
+/*drop database IF EXISTS chacawiki;*/
 create database IF NOT EXISTS chacawiki;
 use chacawiki;
 
