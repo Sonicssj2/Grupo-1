@@ -67,7 +67,7 @@ include 'materia_query.php';
 										</td>
 									</tr>
 									<tr>
-										<td colspan="3"><button type="submit">Subir</button></td>
+										<td colspan="3"><button class="btn btn-outline-danger" type="submit">Subir</button></td>
 									</tr>
 									<tr>
 										<td colspan="3"><h5>Advetencia: Si el archivo ya existe, sera reemplazado</h5></td>
@@ -78,7 +78,7 @@ include 'materia_query.php';
 							<!--Fin de Sección de Archivo-->
 
 
-							<hr class="hr-index">
+							
 							<!--Sección de  Tabla archivo-->
 							<table class="centered">
 								<tr>
