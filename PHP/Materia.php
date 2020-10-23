@@ -23,7 +23,7 @@ include 'materia_query.php';
 	</script>
 </head>
 <body>
-	<img src="../Imagenes/chaca.png" width="100%" height="197">
+	<img class="img" src="../Imagenes/chaca.png">
 	<main>
 		<article>
 			<div class="container">
@@ -71,13 +71,14 @@ include 'materia_query.php';
 									</tr>
 									<tr>
 										<td colspan="3"><h5>Advetencia: Si el archivo ya existe, sera reemplazado</h5></td>
+										
 									</tr>
 								</form>
 							</table>
 							<!--Fin de Sección de Archivo-->
 
-							<hr class="doble">
 
+							<hr class="hr-index">
 							<!--Sección de  Tabla archivo-->
 							<table class="centered">
 								<tr>
@@ -99,11 +100,9 @@ include 'materia_query.php';
 			</div>
 		</article>
 	</main>
-	<footer class="page-footer black darken-3">
-		<div class="container">
-			<hr size="3">
-			<div>División 7° 4° año 2018<br>Proyecto de implementación de sitios web dinámicos<br>Autores:...</div>
-		</div>
-	</footer>
+	<footer class="footer-mati">
+        <div class="texto-footer">División 7° 4° año 2018<br>Proyecto de implementación de sitios web dinámicos<br>Autores:...</div>
+        </div>
+    </footer>
 </body>
 </html>
