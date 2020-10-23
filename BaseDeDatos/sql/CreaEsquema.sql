@@ -1,6 +1,6 @@
-/*drop database IF EXISTS chacawiki;*/
-create database IF NOT EXISTS chacawiki;
-use chacawiki;
+/*DROP DATABASE IF EXISTS chacawiki;*/
+CREATE DATABASE IF NOT EXISTS chacawiki;
+USE chacawiki;
 
 CREATE TABLE `archivos` (
   `id_archivo` int(11) NOT NULL,

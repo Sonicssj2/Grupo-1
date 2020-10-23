@@ -1,3 +1,5 @@
+USE chacawiki;
+
 INSERT INTO `archivos` (`id_archivo`, `ruta`, `nombre`, `tipo_archivo`) VALUES
 (1, '../Archivos/test_PROGRAMA.pdf', 'test_PROGRAMA', 'PROGRAMA'),
 (2, '../Archivos/test_TEORÍA.pdf', 'test_TEORÍA', 'TEORÍA'),
