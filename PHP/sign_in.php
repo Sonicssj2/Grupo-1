@@ -14,7 +14,7 @@ $email=$_POST['email'];
 
 //codigo sql
 $sel=selectw("numero_documento","usuarios","numero_documento",$_POST['numero_documento'],false);
-$ins=insert("usuarios","'','$nombre','$apellido','$tipo_documento',$numero_documento,'$contraseña',$curso,'$division','$email'");
+$ins=insert("usuarios","'','$nombre','$apellido','$tipo_documento',$numero_documento,'$contraseña',$curso,$division,'$email'");
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');

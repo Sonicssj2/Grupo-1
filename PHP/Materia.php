@@ -34,6 +34,7 @@ include 'materia_query.php';
 						<hr>
 						<div>OPERACIONES EN EL SITIO:</div><br>
 						<div align="center">
+
 							<!--Sección de Materia-->
 							<h5>Materia: </h5><select class="browser-default waves-effect waves-light" id="materia" onchange="materia_verde_logo(document.getElementById('materia').value,materias,'matv','img','descripcion')">
 								<option value="">Seleccione una materia</option>
@@ -52,32 +53,31 @@ include 'materia_query.php';
 									<tr>
 										<td>Nombre: </td>
 										<td><input type="text" id="nombre" name="nombre" required></td>
-										<td><input type="file" id="archivo" name="archivo" required></td>
-									</tr>
-									<tr>
-										<td colspan="3">
-											Tipo de Archivo <select class="browser-default waves-effect waves-light" id="tipo_archivo" name="tipo_archivo" required>
-											<option value="">Seleccione un tipo de archivo</option>
-											<option value="PROGRAMA">PROGRAMA</option>
-											<option value="TEORÍA">TEORÍA</option>
-											<option value="TRABAJO PRÁCTICO">TRABAJO PRÁCTICO</option>
-											<option value="NOTA">NOTA</option>
-											<option value="ENLACE">ENLACE</option>
-										</select>
+										<td>Tipo de Archivo:</td>
+										<td>
+											<select class="browser-default waves-effect waves-light" id="tipo_archivo" name="tipo_archivo" onchange="archivo_form(document.getElementById('tipo_archivo').value, document.getElementById('archivo'), document.getElementById('archivo_lbl'))" required>
+												<option value="">Seleccione un tipo de archivo</option>
+												<option value="PROGRAMA">PROGRAMA</option>
+												<option value="TEORÍA">TEORÍA</option>
+												<option value="TRABAJO PRÁCTICO">TRABAJO PRÁCTICO</option>
+												<option value="NOTA">NOTA</option>
+												<option value="ENLACE">ENLACE</option>
+											</select>
 										</td>
 									</tr>
 									<tr>
-										<td colspan="3"><button class="btn btn-outline-danger" type="submit">Subir</button></td>
+										<td colspan="4"><lable id="archivo_lbl"></lable><input type="hidden" id="archivo" name="archivo" required></td>
 									</tr>
 									<tr>
-										<td colspan="3"><h5>Advetencia: Si el archivo ya existe, sera reemplazado</h5></td>
+										<td colspan="4"><button class="btn btn-outline-danger" type="submit">Subir</button></td>
+									</tr>
+									<tr>
+										<td colspan="4"><h5>Advetencia: Si el archivo ya existe, sera reemplazado</h5></td>
 										
 									</tr>
 								</form>
 							</table>
 							<!--Fin de Sección de Archivo-->
-
-
 							
 							<!--Sección de  Tabla archivo-->
 							<table class="centered">
@@ -94,6 +94,7 @@ include 'materia_query.php';
 
 							</table>
 							<!--Fin de Sección de Tabla archivo-->
+
 						</div>
 					</div>
 				</div>
