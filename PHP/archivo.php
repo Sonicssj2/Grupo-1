@@ -22,7 +22,7 @@ else{
 //código sql
 $sel=selectw("ruta","archivos","ruta",$target,true);
 $ins=insert("archivos","'','$target','$nombre','$tipo_archivo'");
-$upd=updatew("archivos","ruta='$target',nombre='$nombre',tipo_archivo='$tipo_archivo'","ruta",$target,true);
+$upd=update($target,$nombre,$tipo_archivo);
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');

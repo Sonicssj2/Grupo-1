@@ -1,33 +1,26 @@
 <?php
-
+//"CALL <funcion>(<param 1>,...,<param n>)"
 function selectw($field,$table,$a,$b,$type){
 	if($type){
-		$query="SELECT $field FROM $table WHERE $a LIKE '$b'";
+		$query="CALL SelecionarConWhereLike($field,$table,$a,$b)";
 	}
 	else{
-		$query="SELECT $field FROM $table WHERE $a=$b";
+		$query="CALL SelecionarConWhereEqual($field,$table,$a,$b)";
 	}
 
 	return $query;
 }
 
 function select($field,$table){
-	return "SELECT $field FROM $table";
+	return "CALL Selecionar($field,$table)";
 }
 
 function insert($table,$values){
-	return "INSERT INTO $table VALUES ($values)";
+	return "CALL Insertar($table,$values)";
 }
 
-function updatew($table,$values,$a,$b,$type){
-	if($type){
-		$query="UPDATE $table SET $values WHERE $a LIKE '$b'";
-	}
-	else{
-		$query="UPDATE $table SET $values WHERE $a=$b";
-	}
-
-	return $query;
+function update($target,$nombre,$tipo_archivo){
+	return "CALL ActualizarArchivos($target,$nombre,$tipo_archivo)";
 }
 
 ?>
