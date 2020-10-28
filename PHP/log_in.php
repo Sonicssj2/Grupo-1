@@ -2,8 +2,12 @@
 
 require 'functions.php';//funciones
 
+//variables
+$numero_documento=$_POST['numero_documento'];
+$contraseña_post=$_POST['contraseña'];
+
 //codigo sql
-$sql=selectw("contraseña","usuarios","numero_documento",$_POST['numero_documento'],false);
+$sql=SeleccionarContraseñaDeUsuariosConWhere($numero_documento);
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');
@@ -19,7 +23,7 @@ $contraseña=mysqli_fetch_row($rs);
 
 //verifica que la contraseña del usuario ingresado es correcta
 if($contraseña!=null){
-	if($contraseña[0]==$_POST['contraseña']){
+	if($contraseña[0]==$contraseña_post){
 		header('location:Materia.php');
 	}
 	else{

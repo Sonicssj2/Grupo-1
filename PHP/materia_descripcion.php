@@ -1,5 +1,17 @@
 <?php
 
+//código slq
+$sqlm=SeleccionarMaterias();
+
+//conexión
+$link=mysqli_connect('127.0.0.1','root','','chacawiki');
+
+//variables de conexión
+$rsm=mysqli_query($link,$sqlm);
+
+//cierre de conexión
+mysqli_close($link);
+
 //variables (icluido free de mysqli result)
 $materias=mysqli_fetch_all($rsm,MYSQLI_NUM);
 $num_rows=mysqli_num_rows($rsm);

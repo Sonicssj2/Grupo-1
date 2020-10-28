@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
 
-include 'materia_query.php';
+require 'functions.php';//funciones
 
 ?>
 

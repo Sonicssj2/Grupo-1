@@ -5,24 +5,24 @@
 require 'functions.php';//funciones
 
 //variables
-$nombre=$_POST['nombre'];
+$nombre_archivo=$_POST['nombre'];
 $tipo_archivo=$_POST["tipo_archivo"];
 if($tipo_archivo=="ENLACE"){
-	$target=$_POST['archivo'];
+	$ruta_archivo=$_POST['archivo'];
 }
 else{
 	$archivo=$_FILES['archivo'];
 	$info=pathinfo($archivo['name']);
 	$ext=$info['extension'];//Extencion del archivo
-	$newname=$nombre.'.'.$ext;
-	$target='../Archivos/'.$newname;
+	$newname=$nombre_archivo.'.'.$ext;
+	$ruta_archivo='../Archivos/'.$newname;
 	$tmp_name=$archivo['tmp_name'];
 }
 
 //código sql
-$sel=selectw("ruta","archivos","ruta",$target,true);
-$ins=insert("archivos","'','$target','$nombre','$tipo_archivo'");
-$upd=update($target,$nombre,$tipo_archivo);
+$sel=SeleccionarArchivosConWhere($ruta_archivo);
+$ins=InsertarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo);
+$upd=ActualizarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo);
 
 //conexión
 $link=mysqli_connect('127.0.0.1','root','','chacawiki');
@@ -40,7 +40,7 @@ if($ruta==NULL){
 	$rs=mysqli_query($link,$ins);//ejecuta query de INSERT
 	mysqli_close($link);//cierre de conexión
 	if($rs){
-		($tipo_archivo=="ENLACE")?:move_uploaded_file($tmp_name, $target);//guarda el archivo en la ruta especificada
+		($tipo_archivo=="ENLACE")?:move_uploaded_file($tmp_name, $ruta_archivo);//guarda el archivo en la ruta especificada
 		echo '<p align="center">Archivo cargado correctamente</p>';
 	}
 	else{
@@ -51,7 +51,7 @@ else{
 	$rs=mysqli_query($link,$upd);//ejecuta query de UPDATE
 	mysqli_close($link);//cierre de conexión
 	if($rs){
-		($tipo_archivo=="ENLACE")?:move_uploaded_file($tmp_name, $target);//guarda el archivo en la ruta especificada
+		($tipo_archivo=="ENLACE")?:move_uploaded_file($tmp_name, $ruta_archivo);//guarda el archivo en la ruta especificada
 		echo '<p align="center">Archivo actualizado correctamente</p>';
 	}
 	else{

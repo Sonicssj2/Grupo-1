@@ -1,5 +1,17 @@
 <?php
 
+//código slq
+$sqla=SeleccionarArchivos();
+
+//conexión
+$link=mysqli_connect('127.0.0.1','root','','chacawiki');
+
+//variables de conexión
+$rsa=mysqli_query($link,$sqla);
+
+//cierre de conexión
+mysqli_close($link);
+
 //variables (icluido free de mysqli result)
 $archivos=mysqli_fetch_all($rsa,MYSQLI_NUM);
 $num_rows=mysqli_num_rows($rsa);

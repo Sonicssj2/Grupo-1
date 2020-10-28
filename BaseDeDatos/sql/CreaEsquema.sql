@@ -1,19 +1,20 @@
-/*DROP DATABASE IF EXISTS chacawiki;*/
+DROP DATABASE IF EXISTS chacawiki;
 CREATE DATABASE IF NOT EXISTS chacawiki;
+
 USE chacawiki;
 
 CREATE TABLE `archivos` (
   `id_archivo` int(11) NOT NULL,
-  `ruta` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `ruta_archivo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_archivo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_archivo` varchar(16) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE `materias` (
   `id_materia` int(11) NOT NULL,
-  `materia` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `icono` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish_ci NOT NULL
+  `nombre_materia` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `icono_materia` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion_materia` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE `usuarios` (
@@ -24,7 +25,7 @@ CREATE TABLE `usuarios` (
   `numero_documento` int(11) NOT NULL,
   `contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `curso` int(11) NOT NULL,
-  `division` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `division` int(11) NOT NULL,
   `email` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 

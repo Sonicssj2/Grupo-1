@@ -1,26 +1,35 @@
 <?php
-//"CALL <funcion>(<param 1>,...,<param n>)"
-function selectw($field,$table,$a,$b,$type){
-	if($type){
-		$query="CALL SelecionarConWhereLike($field,$table,$a,$b)";
-	}
-	else{
-		$query="CALL SelecionarConWhereEqual($field,$table,$a,$b)";
-	}
 
-	return $query;
+function SeleccionarNumeroDocumentoDeUsuariosConWhere($numero_documento){
+	return "CALL SeleccionarNumeroDocumentoDeUsuariosConWhere($numero_documento)";
 }
 
-function select($field,$table){
-	return "CALL Selecionar($field,$table)";
+function SeleccionarContraseñaDeUsuariosConWhere($numero_documento){
+	return "CALL SeleccionarContraseñaDeUsuariosConWhere($numero_documento)";
 }
 
-function insert($table,$values){
-	return "CALL Insertar($table,$values)";
+function SeleccionarArchivosConWhere($ruta_archivo){
+	return "CALL SeleccionarArchivosConWhere($ruta_archivo)";
 }
 
-function update($target,$nombre,$tipo_archivo){
-	return "CALL ActualizarArchivos($target,$nombre,$tipo_archivo)";
+function SeleccionarMaterias(){
+	return "CALL SeleccionarMaterias()";
+}
+
+function SeleccionarArchivos(){
+	return "CALL SeleccionarArchivos()";
+}
+
+function InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento,$contraseña,$curso,$division,$email){
+	return "CALL InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento,$contraseña,$curso,$division,$email)";
+}
+
+function InsertarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo){
+	return "CALL InsertarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo)";
+}
+
+function ActualizarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo){
+	return "CALL ActualizarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo)";
 }
 
 ?>
