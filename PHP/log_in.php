@@ -7,19 +7,16 @@ $numero_documento=$_POST['numero_documento'];
 $contraseña_post=$_POST['contraseña'];
 
 //codigo sql
-$sql=SeleccionarContraseñaDeUsuariosConWhere($numero_documento);
-
-//conexión
-$link=mysqli_connect('127.0.0.1','root','','chacawiki');
+$select=SeleccionarContraseñaDeUsuariosConWhere($numero_documento);
 
 //variables de conexión
-$rs=mysqli_query($link,$sql);
-
-//cierrre de conexión
-mysqli_close($link);
+$rs=connect($select);
 
 //variables
 $contraseña=mysqli_fetch_row($rs);
+
+//variables liberadas
+mysqli_free($rs);
 
 //verifica que la contraseña del usuario ingresado es correcta
 if($contraseña!=null){

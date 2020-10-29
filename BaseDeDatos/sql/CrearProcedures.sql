@@ -17,6 +17,21 @@ END//
 
 
 
+DROP PROCEDURE IF EXISTS SeleccionarIdDivisionDeDivisionesConWhere//
+CREATE PROCEDURE SeleccionarIdDivisionDeDivisionesConWhere (IN vCurso INT, IN vDivision INT)
+
+BEGIN
+
+	SELECT id_division
+	FROM divisiones
+	WHERE id_curso=(SELECT id_curso FROM cursos WHERE numero_curso=vCurso) AND numero_division=vDivision;
+
+END//
+
+
+
+
+
 DROP PROCEDURE IF EXISTS SeleccionarContraseñaDeUsuariosConWhere//
 CREATE PROCEDURE SeleccionarContraseñaDeUsuariosConWhere (IN vNumeroDocumento INT)
 
@@ -76,12 +91,12 @@ END//
 
 
 DROP PROCEDURE IF EXISTS InsertarUsuarios//
-CREATE PROCEDURE InsertarUsuarios (IN vNombre VARCHAR(30),IN vApellido VARCHAR(30),IN vTipoDocumento VARCHAR(3),IN vNumeroDocumento INT,IN vContraseña VARCHAR(50),IN vCurso INT,IN vDivision VARCHAR(2),IN vEmail VARCHAR(50))
+CREATE PROCEDURE InsertarUsuarios (IN vIdDivision INT, IN vNombre VARCHAR(30),IN vApellido VARCHAR(30),IN vTipoDocumento VARCHAR(3),IN vNumeroDocumento INT,IN vContraseña VARCHAR(50), IN vEmail VARCHAR(50))
 
 BEGIN
 
-	INSERT INTO usuarios(nombre,apellido,tipo_documento,numero_documento,contraseña,curso,division,email)
-	VALUES (vNombre,vApellido,vTipoDocumento,vNumeroDocumento,vContraseña,vCurso,vDivision,vEmail);
+	INSERT INTO usuarios(id_division,nombre,apellido,tipo_documento,numero_documento,contraseña,email)
+	VALUES (vIdDivision,vNombre,vApellido,vTipoDocumento,vNumeroDocumento,vContraseña,vEmail);
 
 END//
 
