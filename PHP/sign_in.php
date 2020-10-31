@@ -39,6 +39,6 @@ if ($numero_documento==NULL) {
 else {
 	echo '<p align="center">Usuario existente</p>';
 }
-echo '<a href="../Paginas/index.htm">Iniciar sesión</a>';
+echo '<div align="center"><a href="../Paginas/index.htm">Iniciar sesión</a><div>';
 
 ?>

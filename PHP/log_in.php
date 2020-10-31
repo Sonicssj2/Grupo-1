@@ -33,17 +33,12 @@ if($contraseña!=NULL){
 		header("location:Materia.php?sid=$sid");
 	}
 	else{
-		echo '
-			<p align="center">Error al validar la contraseña</p>
-			<a href="../Paginas/index.htm">Volver</a>
-		';
+		echo '<p align="center">Error al validar la contraseña</p>';
 	}
 }
 else{
-	echo '
-		<p align="center">No se encuentra el usuiario</p>
-		<a href="../Paginas/index.htm">Volver</a>
-	';
+	echo '<p align="center">No se encuentra el usuiario</p>';
 }
+echo '<div align="center"><a href="'.$_SERVER['HTTP_REFERER'].'">Volver</a></div>'
 
 ?>

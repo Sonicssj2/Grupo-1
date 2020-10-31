@@ -1,10 +1,10 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
-
-require 'materia_redirect.php';
+#error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
 
 require 'functions.php';
+
+require 'materia_redirect.php';
 
 ?>
 
@@ -18,11 +18,9 @@ require 'functions.php';
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="../Estilos/estilo.css">
-	<script>
+	<script type="text/javascript">
 
-		<?php include 'materia_descripcion.php';?>
-
-		<?php include 'recurso_table.php';?>
+		<?php include 'arrays_to_javascript.php';?>
 
 	</script>
 </head>
@@ -52,7 +50,7 @@ require 'functions.php';
 
 							<!--Sección de Recurso-->
 							<table class="centered">
-								<form method="POST" action="recurso.php?replace=false" enctype="multipart/form-data">
+								<form method="POST" action="subir_recurso.php" enctype="multipart/form-data">
 									<caption><h5><u>Recurso</u></h5></caption>
 									<tr>
 										<td>Nombre: </td>

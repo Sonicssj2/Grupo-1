@@ -2,11 +2,11 @@
 
 //código slq
 $select_materias="CALL SeleccionarMaterias(".$_SESSION['numero_documento'].")";
-$select_archivos="CALL SeleccionarRecursos(".$_SESSION['numero_documento'].")";
+$select_recursos="CALL SeleccionarRecursos(".$_SESSION['numero_documento'].")";
 
-//variables de conexión
+//respuestas de querys
 $rs_select_materias=connect($select_materias);
-$rs_select_archivos=connect($select_archivos);
+$rs_select_recursos=connect($select_recursos);
 
 //variables de materias
 $materias=mysqli_fetch_all($rs_select_materias,MYSQLI_NUM);
@@ -16,16 +16,19 @@ $num_fields_materias=mysqli_num_fields($rs_select_materias);
 //resultado de materias liberado
 mysqli_free_result($rs_select_materias);
 
-//variables de archivos
-$archivos=mysqli_fetch_all($rs_select_archivos,MYSQLI_NUM);
-$num_rows_archivos=mysqli_num_rows($rs_select_archivos);
-$num_fields_archivos=mysqli_num_fields($rs_select_archivos);
+//variables de recursos
+$recursos=mysqli_fetch_all($rs_select_recursos,MYSQLI_NUM);
+$num_rows_recursos=mysqli_num_rows($rs_select_recursos);
+$num_fields_recursos=mysqli_num_fields($rs_select_recursos);
 
-//resultado de archivos liberado
-mysqli_free_result($rs_select_archivos);
+//resultado de recursos liberado
+mysqli_free_result($rs_select_recursos);
 
 //se envia el array $materias a javascript
 echo php_to_javascript($materias,"materias",$num_rows_materias,$num_fields_materias);
+
+//se envia el array $recursos a javascript
+echo php_to_javascript($recursos,"recursos",$num_rows_recursos,$num_fields_recursos);
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /*
@@ -36,26 +39,26 @@ $nota_i=0;
 $enlace_i=0;
 
 //se generan 5 arrays bidimensionales para almacenar los campos, agrupandolos por
-//tipo de archivo
+//tipo de recurso
 for($f=0;$f<$num_rows;$f++){
-	switch($archivos[$f][2]){
+	switch($recursos[$f][2]){
 		case 'PROGRAMA':
-			$programa[$programa_i++]=$archivos[$f];
+			$programa[$programa_i++]=$recursos[$f];
 			break;
 		case 'TEORÍA':
-			$teoria[$teoria_i++]=$archivos[$f];
+			$teoria[$teoria_i++]=$recursos[$f];
 			break;
 		case 'TRABAJO PRÁCTICO':
-			$trabajo_practico[$trabajo_practico_i++]=$archivos[$f];
+			$trabajo_practico[$trabajo_practico_i++]=$recursos[$f];
 			break;
 		case 'NOTA':
-			$nota[$nota_i++]=$archivos[$f];
+			$nota[$nota_i++]=$recursos[$f];
 			break;
 		case 'ENLACE':
-			$enlace[$enlace_i++]=$archivos[$f];
+			$enlace[$enlace_i++]=$recursos[$f];
 			break;
 		default:
-			echo '<h1>ERROR DE TIPO DE ARCHIVO H1</h1>';
+			echo '<h1>ERROR DE TIPO DE RECURSO H1</h1>';
 			break;
 	}
 }
@@ -71,7 +74,7 @@ $trabajo_practico_i=0;
 $nota_i=0;
 $enlace_i=0;
 
-//se crea la tabla, ordenando los valores insertados por el tipo de archivo
+//se crea la tabla, ordenando los valores insertados por el tipo de recurso
 for($a=0;$a<$max;$a++){
 	for($i=0;$i<5;$i++){
 		switch($i){
@@ -91,7 +94,7 @@ for($a=0;$a<$max;$a++){
 				echo '<td><a href="'.$enlace[$enlace_i][0].'">'.$enlace[$enlace_i++][1].'</a></td>';
 				break;
 			default:
-				echo '<td><h1>ERROR DE TIPO DE ARCHIVO TD</h1></td>';
+				echo '<td><h1>ERROR DE TIPO DE RECURSO TD</h1></td>';
 				break;
 		}
 	}

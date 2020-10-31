@@ -1,13 +1,16 @@
 <?php
 
-//si se accede a materia sin haber pasado por la validacion, se redirecciona a index.htm
-$ref="http://localhost/santi/Grupo-1/Paginas/index.htm";
+//variables
 $sref=$_SERVER['HTTP_REFERER'];
+$refs=["http://localhost/santi/Grupo-1/Paginas/index.htm","http://localhost/santi/Grupo-1/PHP/subir_recurso.php"];
 
-($ref==$sref)?$sid=$_GET["sid"]:header("location:../Paginas/index.htm");
+//si se accede a materia con $_SERVER['HTTP_REFERER'] distinto de todos los elmentos de $refs, se redirecciona a index.htm
+(redirect($sref,$refs))?$sid=$_GET["sid"]:header("location:../Paginas/index.htm");
 
-session_id($sid);//reestablece el id de sesion
+//reestablece el id de sesion
+session_id($sid);
 
-session_start();//reanuda la sesion
+//reanuda la sesion
+session_start();
 
 ?>

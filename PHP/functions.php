@@ -16,8 +16,23 @@ function connect($query){
 	return $return;
 }
 
+function redirect($sref,$refs){
+	$return=false;
+	foreach ($refs as $ref) {
+		if($ref==$sref){
+			$return+=true;
+			break;
+		}
+		else{
+			$return+=false;
+		}
+	}
+
+	return $return;
+}
+
 function php_to_javascript($array,$name,$num_rows,$num_fields){
-	$echo='let '.$name.'=[';
+	$echo=PHP_EOL.'let '.$name.'=[';
 	for ($f=0;$f<$num_rows;$f++){
 		$echo.='[';
 		for ($c=0;$c<$num_fields;$c++){
@@ -25,7 +40,7 @@ function php_to_javascript($array,$name,$num_rows,$num_fields){
 		}
 		$echo.=($f!=$num_rows-1)?'],':']';
 	}
-	$echo.='];';
+	$echo.='];'.PHP_EOL;
 	return $echo;
 }
 
