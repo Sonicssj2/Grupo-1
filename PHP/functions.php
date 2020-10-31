@@ -16,40 +16,17 @@ function connect($query){
 	return $return;
 }
 
-function SeleccionarNumeroDocumentoDeUsuariosConWhere($numero_documento){
-	return "CALL SeleccionarNumeroDocumentoDeUsuariosConWhere($numero_documento)";
-}
-
-function SeleccionarIdDivisionDeDivisionesConWhere($curso,$division){
-	return "CALL SeleccionarIdDivisionDeDivisionesConWhere($curso,$division)";
-}
-
-function SeleccionarContraseñaDeUsuariosConWhere($numero_documento){
-	return "CALL SeleccionarContraseñaDeUsuariosConWhere($numero_documento)";
-}
-
-function SeleccionarArchivosConWhere($ruta_archivo){
-	return "CALL SeleccionarArchivosConWhere($ruta_archivo)";
-}
-
-function SeleccionarMaterias(){
-	return "CALL SeleccionarMaterias()";
-}
-
-function SeleccionarArchivos(){
-	return "CALL SeleccionarArchivos()";
-}
-
-function InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento,$contraseña,$curso,$division,$email){
-	return "CALL InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento,$contraseña,$curso,$division,$email)";
-}
-
-function InsertarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo){
-	return "CALL InsertarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo)";
-}
-
-function ActualizarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo){
-	return "CALL ActualizarArchivos($ruta_archivo,$nombre_archivo,$tipo_archivo)";
+function php_to_javascript($array,$name,$num_rows,$num_fields){
+	$echo='let '.$name.'=[';
+	for ($f=0;$f<$num_rows;$f++){
+		$echo.='[';
+		for ($c=0;$c<$num_fields;$c++){
+			$echo.=($c!=$num_fields-1)?'"'.str_replace(PHP_EOL, '<br>', $array[$f][$c]).'",':'"'.str_replace(PHP_EOL, '<br>', $array[$f][$c]).'"';
+		}
+		$echo.=($f!=$num_rows-1)?'],':']';
+	}
+	$echo.='];';
+	return $echo;
 }
 
 ?>

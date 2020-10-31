@@ -1,27 +1,36 @@
 <?php
 
-require 'functions.php';//funciones
+//inicia la sesion
+session_start();
+
+//guarda la id de la sesion
+$sid=session_id();
+
+require 'functions.php';
 
 //variables
 $numero_documento=$_POST['numero_documento'];
 $contraseña_post=$_POST['contraseña'];
 
-//codigo sql
-$select=SeleccionarContraseñaDeUsuariosConWhere($numero_documento);
+//variable de sesion
+$_SESSION["numero_documento"]=$numero_documento;
 
-//variables de conexión
+//codigo sql
+$select="CALL SeleccionarContraseña($numero_documento)";
+
+//respuesta de query
 $rs=connect($select);
 
-//variables
+//variable de query
 $contraseña=mysqli_fetch_row($rs);
 
-//variables liberadas
-mysqli_free($rs);
+//respuesta liberada
+mysqli_free_result($rs);
 
 //verifica que la contraseña del usuario ingresado es correcta
-if($contraseña!=null){
+if($contraseña!=NULL){
 	if($contraseña[0]==$contraseña_post){
-		header('location:Materia.php');
+		header("location:Materia.php?sid=$sid");
 	}
 	else{
 		echo '

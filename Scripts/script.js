@@ -26,43 +26,42 @@ function max_min_de_rango_documento(max, min, id_tag) {
 }
 //
 //
-function materia_verde_logo(mat, materias, id_mat, id_img, id_desc) {
-	if (mat == "") {
-		mat_img("Seleccione una materia ", "../Imagenes/chaca.png", "", id_mat, id_img, id_desc);
+function materia_verde_logo(materia_seleccionada, materias, id_matv, id_img, id_desc) {
+	if (materia_seleccionada == "") {
+		mat_img("Seleccione una materia ", "../Imagenes/chaca.png", "", id_matv, id_img, id_desc);
 	} else {
 		for (let f = 0; f < materias.length; f++) {
-			if (materias[f][0] == mat) {
-				mat_img(mat + ' ', "../Imagenes/" + mat + ".png", materias[f][1], id_mat, id_img, id_desc);
+			if (materias[f][1] == materia_seleccionada) {
+				mat_img(materia_seleccionada + ' ', materias[f][2], materias[f][3], id_matv, id_img, id_desc);
 				break;
 			}
 		}
 	}
-
 }
 //
 //
-function mat_img(mat, img, desc, id_mat, id_img, id_desc) {
-	document.getElementById(id_mat).innerHTML = mat;
+function mat_img(materia_seleccionada, img, desc, id_matv, id_img, id_desc) {
+	document.getElementById(id_matv).innerHTML = materia_seleccionada;
 	document.getElementById(id_img).src = img;
-	document.getElementById(id_desc).innerText = desc;
+	document.getElementById(id_desc).innerHTML = desc;
 }
 //
 //
-function archivo_form(tipo_archivo, archivo, archivo_lbl){
-	switch(tipo_archivo){
+function recurso_form(tipo_recurso, recurso, recurso_lbl){
+	switch(tipo_recurso){
 		case "ENLACE":
-			archivo.type="url";
-			archivo_lbl.innerText="Ruta:"
+			recurso.type="url";
+			recurso_lbl.innerText="Ruta:"
 		break;
 		
 		case "":
-			archivo.type="hidden";
-			archivo_lbl.innerText=""
+			recurso.type="hidden";
+			recurso_lbl.innerText=""
 		break;
 
 		default:
-			archivo.type="file";
-			archivo_lbl.innerText="";
+			recurso.type="file";
+			recurso_lbl.innerText="";
 		break;
 	}
 }

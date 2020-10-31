@@ -2,7 +2,9 @@
 
 error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
 
-require 'functions.php';//funciones
+require 'materia_redirect.php';
+
+require 'functions.php';
 
 ?>
 
@@ -19,6 +21,8 @@ require 'functions.php';//funciones
 	<script>
 
 		<?php include 'materia_descripcion.php';?>
+
+		<?php include 'recurso_table.php';?>
 
 	</script>
 </head>
@@ -43,20 +47,20 @@ require 'functions.php';//funciones
 
 							</select><br>
 							<div id="matv">Seleccione una materia </div><img src="../Imagenes/chaca.png" width="30" height="20" id="img"><br>
-							<div class="espacio">Descripcion de la materia </div><textarea id="descripcion" name="descripcion" readonly></textarea><br>
+							<div class="espacio">Descripcion de la materia:</div><div id="descripcion" name="descripcion" readonly></div><br>
 							<!--Fin de Sección de Materia-->
 
-							<!--Sección de Archivo-->
+							<!--Sección de Recurso-->
 							<table class="centered">
-								<form method="POST" action="archivo.php?replace=false" enctype="multipart/form-data">
-									<caption><h5><u>Archivo</u></h5></caption>
+								<form method="POST" action="recurso.php?replace=false" enctype="multipart/form-data">
+									<caption><h5><u>Recurso</u></h5></caption>
 									<tr>
 										<td>Nombre: </td>
 										<td><input type="text" id="nombre" name="nombre" required></td>
-										<td>Tipo de Archivo:</td>
+										<td>Tipo de Recurso:</td>
 										<td>
-											<select class="browser-default waves-effect waves-light" id="tipo_archivo" name="tipo_archivo" onchange="archivo_form(document.getElementById('tipo_archivo').value, document.getElementById('archivo'), document.getElementById('archivo_lbl'))" required>
-												<option value="">Seleccione un tipo de archivo</option>
+											<select class="browser-default waves-effect waves-light" id="tipo_recurso" name="tipo_recurso" onchange="recurso_form(document.getElementById('tipo_recurso').value, document.getElementById('recurso'), document.getElementById('recurso_lbl'))" required>
+												<option value="">Seleccione un tipo de recurso</option>
 												<option value="PROGRAMA">PROGRAMA</option>
 												<option value="TEORÍA">TEORÍA</option>
 												<option value="TRABAJO PRÁCTICO">TRABAJO PRÁCTICO</option>
@@ -66,21 +70,21 @@ require 'functions.php';//funciones
 										</td>
 									</tr>
 									<tr>
-										<td colspan="4"><lable id="archivo_lbl"></lable><input type="hidden" id="archivo" name="archivo" required></td>
+										<td colspan="4"><lable id="recurso_lbl"></lable><input type="hidden" id="recurso" name="recurso" required></td>
 									</tr>
 									<tr>
 										<td colspan="4"><button class="btn btn-outline-danger" type="submit">Subir</button></td>
 									</tr>
 									<tr>
-										<td colspan="4"><h5>Advetencia: Si el archivo ya existe, sera reemplazado</h5></td>
+										<td colspan="4"><h5>Advetencia: Si el recurso ya existe, sera reemplazado</h5></td>
 										
 									</tr>
 								</form>
 							</table>
-							<!--Fin de Sección de Archivo-->
+							<!--Fin de Sección de Recurso-->
 							
-							<!--Sección de  Tabla archivo-->
-							<table class="centered">
+							<!--Sección de  Tabla recurso-->
+							<table class="centered" id="recurso_table" name="recurso_table">
 								<tr>
 									<td>PROGRAMA</td>
 									<td>TEORÍA</td>
@@ -88,12 +92,8 @@ require 'functions.php';//funciones
 									<td>NOTAS</td>
 									<td>ENLACES RELACIONADOS</td>
 								</tr>
-								<tr>
-
-								<?php include 'archivo_table.php';?>
-
 							</table>
-							<!--Fin de Sección de Tabla archivo-->
+							<!--Fin de Sección de Tabla recurso-->
 
 						</div>
 					</div>
