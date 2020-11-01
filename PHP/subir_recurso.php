@@ -4,7 +4,8 @@ require 'functions.php';
 
 //variables
 $nombre_recurso=$_POST['nombre'];
-$tipo_recurso=$_POST["tipo_recurso"];
+$tipo_recurso=$_POST['tipo_recurso'];
+$materia_recurso=$_POST['materia_recurso'];
 if($tipo_recurso=="ENLACE"){
 	$ruta_recurso=$_POST['recurso'];
 }
@@ -19,8 +20,10 @@ else{
 
 //código sql
 $select="CALL SeleccionarRuta('$ruta_recurso')";
-$insert="CALL InsertarRecusros('$ruta_recurso','$nombre_recurso','$tipo_recurso')";
-$update="CALL ActualizarRecursos('$ruta_recurso','$nombre_recurso','$tipo_recurso')";
+$ultima_id="SELECT @@identity AS id";
+$asdas="SELECT MAX(id) AS id FROM tabla";
+$insert_recursos="CALL InsertarRecusros('$ruta_recurso','$nombre_recurso','$tipo_recurso')";
+$update_materias_recursos="CALL InsertarMateriasRecursos('$ruta_recurso','$nombre_recurso','$tipo_recurso')";
 
 //respuesta de query
 $rs_select=connect($select);

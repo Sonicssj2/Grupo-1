@@ -6,7 +6,9 @@ require 'functions.php';
 
 require 'materia_redirect.php';
 
-var_dump($_SERVER['HTTP_REFERER']);
+require 'querys.php';
+
+var_dump($recursos);
 
 ?>
 
@@ -19,11 +21,6 @@ var_dump($_SERVER['HTTP_REFERER']);
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="../Estilos/estilo.css">
-	<script type="text/javascript">
-
-		<?php include 'querys.php';?>
-
-	</script>
 </head>
 <body>
 	<img class="img" src="../Imagenes/chaca.png">
@@ -32,7 +29,7 @@ var_dump($_SERVER['HTTP_REFERER']);
 			<div class="container">
 				<div class="row">
 					<div class="input-field s6">
-						<h1 align="center">SECCIÓN DE MATERIAS</h1>
+						<h1 align="center" id="ancla">SECCIÓN DE MATERIAS</h1>
 						<div>TIPO DE USUARIO:</div>
 						<hr>
 						<div>OPERACIONES EN EL SITIO:</div><br>
@@ -40,21 +37,22 @@ var_dump($_SERVER['HTTP_REFERER']);
 
 							<!--Sección de Materia-->
 							<h5>Materia:</h5>
-							<form method="POST" action="Materia.php?sid=<?=$sid?>" id="materia_form">
-								<select class="browser-default waves-effect waves-light" id="materia" name="materia" onchange="materia_verde_logo(document.getElementById('materia').value,materias,'matv','img','descripcion');document.getElementById('materia_form').submit()">
+							<form method="POST" action="Materia.php?sid=<?=$sid?>#ancla" id="materia_form">
+								<select class="browser-default waves-effect waves-light" id="materia" name="materia" onchange="document.getElementById('materia_form').submit()">
 									<option value="">Seleccione una materia</option>
+									
+									<?php require 'materia_select_options.php';?>
+									
+								</select><br>
 
-									<?php include 'materia_select_options.php';?>
+								<?php require 'materia_desc.php';?>
 
-								</select>
-							</form><br>
-							<div id="matv">Seleccione una materia </div><img src="../Imagenes/chaca.png" width="30" height="20" id="img"><br>
-							<div class="espacio">Descripcion de la materia:</div><div id="descripcion" name="descripcion" readonly></div><br>
+							</form>
 							<!--Fin de Sección de Materia-->
 
 							<!--Sección de Recurso-->
-							<table class="centered">
-								<form method="POST" action="subir_recurso.php" enctype="multipart/form-data">
+							<form onsubmit="return subir_archivo(document.getElementById('materia_recurso').value)" method="POST" action="subir_recurso.php" enctype="multipart/form-data">
+								<table class="centered">
 									<caption><h5><u>Recurso</u></h5></caption>
 									<tr>
 										<td>Nombre: </td>
@@ -75,25 +73,20 @@ var_dump($_SERVER['HTTP_REFERER']);
 										<td colspan="4"><lable id="recurso_lbl"></lable><input type="hidden" id="recurso" name="recurso" required></td>
 									</tr>
 									<tr>
+										<td colspan="4"><input type="hidden" id="materia_recurso" name="materia_recurso" value="<?=$materia_post?>"></td>
+									</tr>
+									<tr>
 										<td colspan="4"><button class="btn btn-outline-danger" type="submit">Subir</button></td>
 									</tr>
 									<tr>
 										<td colspan="4"><h5>Advetencia: Si el recurso ya existe, sera reemplazado</h5></td>
-										
 									</tr>
-								</form>
-							</table>
+								</table>
+							</form>
 							<!--Fin de Sección de Recurso-->
 							
 							<!--Sección de  Tabla recurso-->
 							<table class="centered" id="recurso_table" name="recurso_table">
-								<tr>
-									<td>PROGRAMA</td>
-									<td>TEORÍA</td>
-									<td>TRABAJOS PRÁCTICOS</td>
-									<td>NOTAS</td>
-									<td>ENLACES RELACIONADOS</td>
-								</tr>
 
 								<?php require 'recursos_table.php';?>
 

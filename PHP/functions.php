@@ -31,7 +31,7 @@ function redirect($sref,$refs){
 	return $return;
 }
 
-function php_to_javascript($array,$name){
+/*function php_to_javascript($array,$name){
 	$echo=PHP_EOL.$name.'=[';
 	foreach ($array as $fila){
 		$echo.='[';
@@ -42,6 +42,6 @@ function php_to_javascript($array,$name){
 	}
 	$echo=trim($echo,',').'];'.PHP_EOL;
 	return $echo;
-}
+}*/
 
 ?>

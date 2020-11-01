@@ -43,22 +43,32 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS SeleccionarRecursos//
-CREATE PROCEDURE SeleccionarRecursos (IN vNumeroDocumento INT)
+DROP PROCEDURE IF EXISTS SeleccionarNombreMaterias//
+CREATE PROCEDURE SeleccionarMaterias (IN vNumeroDocumento INT)
 BEGIN
-	SELECT *
+	SELECT nombre_materia
+	FROM materias
+	WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento);
+END//
+
+
+
+DROP PROCEDURE IF EXISTS SeleccionarRecursos//
+CREATE PROCEDURE SeleccionarRecursos (IN vIdMateria INT)
+BEGIN
+	SELECT ruta_recurso,nombre_recurso,tipo_recurso
 	FROM recursos
-	WHERE id_recurso IN (SELECT id_recurso FROM materias_recursos WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento));
+	WHERE id_recurso IN (SELECT id_recurso FROM materias_recursos WHERE id_materia=vIdMateria);
 END//
 
 
 
 DROP PROCEDURE IF EXISTS SeleccionarRuta//
-CREATE PROCEDURE SeleccionarRuta (IN vRutaArchivo VARCHAR(50))
+CREATE PROCEDURE SeleccionarRuta (IN vRutaRecurso VARCHAR(50))
 BEGIN
 	SELECT ruta_recurso
 	FROM recursos
-	WHERE ruta_recurso LIKE vRutaArchivo;
+	WHERE ruta_recurso LIKE vRutaRecurso;
 END//
 
 
@@ -72,8 +82,8 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS ActualizarRecursos//
-CREATE PROCEDURE ActualizarRecursos (IN vRutaRecurso VARCHAR(50),IN vNombreRecurso VARCHAR(50),IN vTipoRecurso VARCHAR(16))
+DROP PROCEDURE IF EXISTS InsertarMateriasRecursos//
+CREATE PROCEDURE InsertarMateriasRecursos (IN vRutaRecurso VARCHAR(50),IN vNombreRecurso VARCHAR(50),IN vTipoRecurso VARCHAR(16))
 BEGIN
 	UPDATE recursos
 	SET ruta_recurso=vRutaRecurso, nombre_recurso=vNombreRecurso, tipo_recurso=vTipoRecurso

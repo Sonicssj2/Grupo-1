@@ -1,6 +1,16 @@
 <?php 
 
-if(isset($_POST['materia'])){
+if($materia_post!=""){
+	echo '
+		<tr>
+			<td>PROGRAMA</td>
+			<td>TEORÍA</td>
+			<td>TRABAJOS PRÁCTICOS</td>
+			<td>NOTAS</td>
+			<td>ENLACES RELACIONADOS</td>
+		</tr>
+	';
+
 	$programa_i=0;
 	$teoria_i=0;
 	$trabajo_practico_i=0;
@@ -9,22 +19,22 @@ if(isset($_POST['materia'])){
 	
 	//se generan 5 arrays bidimensionales para almacenar los campos, agrupandolos por
 	//tipo de recurso
-	for($f=0;$f<$num_rows_recursos;$f++){
-		switch($recursos[$f][3]){
+	foreach($recursos as $fila){
+		switch($fila[2]){
 			case 'PROGRAMA':
-				$programa[$programa_i++]=$recursos[$f];
+				$programa[$programa_i++]=$fila;
 				break;
 			case 'TEORÍA':
-				$teoria[$teoria_i++]=$recursos[$f];
+				$teoria[$teoria_i++]=$fila;
 				break;
 			case 'TRABAJO PRÁCTICO':
-				$trabajo_practico[$trabajo_practico_i++]=$recursos[$f];
+				$trabajo_practico[$trabajo_practico_i++]=$fila;
 				break;
 			case 'NOTA':
-				$nota[$nota_i++]=$recursos[$f];
+				$nota[$nota_i++]=$fila;
 				break;
 			case 'ENLACE':
-				$enlace[$enlace_i++]=$recursos[$f];
+				$enlace[$enlace_i++]=$fila;
 				break;
 			default:
 				echo '<h1>ERROR DE TIPO DE RECURSO H1</h1>';
@@ -48,19 +58,19 @@ if(isset($_POST['materia'])){
 		for($i=0;$i<5;$i++){
 			switch($i){
 				case 0:
-					echo '<td><a href="'.$programa[$programa_i][1].'">'.$programa[$programa_i++][2].'</a></td>';
+					echo '<td><a href="'.$programa[$programa_i][0].'">'.$programa[$programa_i++][1].'</a></td>';
 					break;
 				case 1:
-					echo '<td><a href="'.$teoria[$teoria_i][1].'">'.$teoria[$teoria_i++][2].'</a></td>';
+					echo '<td><a href="'.$teoria[$teoria_i][0].'">'.$teoria[$teoria_i++][1].'</a></td>';
 					break;
 				case 2:
-					echo '<td><a href="'.$trabajo_practico[$trabajo_practico_i][1].'">'.$trabajo_practico[$trabajo_practico_i++][2].'</a></td>';
+					echo '<td><a href="'.$trabajo_practico[$trabajo_practico_i][0].'">'.$trabajo_practico[$trabajo_practico_i++][1].'</a></td>';
 					break;
 				case 3:
-					echo '<td><a href="'.$nota[$nota_i][1].'">'.$nota[$nota_i++][2].'</a></td>';
+					echo '<td><a href="'.$nota[$nota_i][0].'">'.$nota[$nota_i++][1].'</a></td>';
 					break;
 				case 4:
-					echo '<td><a href="'.$enlace[$enlace_i][1].'">'.$enlace[$enlace_i++][2].'</a></td>';
+					echo '<td><a href="'.$enlace[$enlace_i][0].'">'.$enlace[$enlace_i++][1].'</a></td>';
 					break;
 				default:
 					echo '<td><h1>ERROR DE TIPO DE RECURSO TD</h1></td>';
