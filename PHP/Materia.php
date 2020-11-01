@@ -1,10 +1,12 @@
 <?php
 
-#error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
+error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
 
 require 'functions.php';
 
 require 'materia_redirect.php';
+
+var_dump($_SERVER['HTTP_REFERER']);
 
 ?>
 
@@ -14,13 +16,12 @@ require 'materia_redirect.php';
 	<meta charset="utf-8">
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript" src="../Scripts/script.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="../Estilos/estilo.css">
 	<script type="text/javascript">
 
-		<?php include 'arrays_to_javascript.php';?>
+		<?php include 'querys.php';?>
 
 	</script>
 </head>
@@ -38,12 +39,15 @@ require 'materia_redirect.php';
 						<div align="center">
 
 							<!--Sección de Materia-->
-							<h5>Materia: </h5><select class="browser-default waves-effect waves-light" id="materia" onchange="materia_verde_logo(document.getElementById('materia').value,materias,'matv','img','descripcion')">
-								<option value="">Seleccione una materia</option>
+							<h5>Materia:</h5>
+							<form method="POST" action="Materia.php?sid=<?=$sid?>" id="materia_form">
+								<select class="browser-default waves-effect waves-light" id="materia" name="materia" onchange="materia_verde_logo(document.getElementById('materia').value,materias,'matv','img','descripcion');document.getElementById('materia_form').submit()">
+									<option value="">Seleccione una materia</option>
 
-								<?php include 'materia_select.php';?>
+									<?php include 'materia_select_options.php';?>
 
-							</select><br>
+								</select>
+							</form><br>
 							<div id="matv">Seleccione una materia </div><img src="../Imagenes/chaca.png" width="30" height="20" id="img"><br>
 							<div class="espacio">Descripcion de la materia:</div><div id="descripcion" name="descripcion" readonly></div><br>
 							<!--Fin de Sección de Materia-->
@@ -90,6 +94,9 @@ require 'materia_redirect.php';
 									<td>NOTAS</td>
 									<td>ENLACES RELACIONADOS</td>
 								</tr>
+
+								<?php require 'recursos_table.php';?>
+
 							</table>
 							<!--Fin de Sección de Tabla recurso-->
 

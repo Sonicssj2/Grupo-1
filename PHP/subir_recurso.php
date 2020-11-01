@@ -11,9 +11,9 @@ if($tipo_recurso=="ENLACE"){
 else{
 	$recurso=$_FILES['recurso'];
 	$info=pathinfo($recurso['name']);
-	$ext=$info['extension'];//Extencion del recurso
+	$ext=$info['extension'];
 	$newname=$nombre_recurso.'.'.$ext;
-	$ruta_recurso='../Archivos/'.$newname;
+	$ruta_recurso='../Recursos/'.$newname;
 	$tmp_name=$recurso['tmp_name'];
 }
 

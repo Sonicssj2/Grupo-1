@@ -30,7 +30,7 @@ function materia_verde_logo(materia_seleccionada, materias, id_matv, id_img, id_
 	if (materia_seleccionada == "") {
 		mat_img("Seleccione una materia ", "../Imagenes/chaca.png", "", id_matv, id_img, id_desc);
 	} else {
-		for (let f = 0; f < materias.length; f++) {
+		for (f = 0; f < materias.length; f++) {
 			if (materias[f][1] == materia_seleccionada) {
 				mat_img(materia_seleccionada + ' ', materias[f][2], materias[f][3], id_matv, id_img, id_desc);
 				break;

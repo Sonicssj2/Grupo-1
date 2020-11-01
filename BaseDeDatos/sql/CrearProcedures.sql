@@ -36,7 +36,7 @@ END//
 DROP PROCEDURE IF EXISTS SeleccionarMaterias//
 CREATE PROCEDURE SeleccionarMaterias (IN vNumeroDocumento INT)
 BEGIN
-	SELECT id_materia,nombre_materia,icono_materia,descripcion_materia
+	SELECT *
 	FROM materias
 	WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento);
 END//
@@ -46,7 +46,7 @@ END//
 DROP PROCEDURE IF EXISTS SeleccionarRecursos//
 CREATE PROCEDURE SeleccionarRecursos (IN vNumeroDocumento INT)
 BEGIN
-	SELECT id_recurso,ruta_recurso,nombre_recurso,tipo_recurso
+	SELECT *
 	FROM recursos
 	WHERE id_recurso IN (SELECT id_recurso FROM materias_recursos WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento));
 END//

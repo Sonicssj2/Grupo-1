@@ -31,16 +31,16 @@ function redirect($sref,$refs){
 	return $return;
 }
 
-function php_to_javascript($array,$name,$num_rows,$num_fields){
-	$echo=PHP_EOL.'let '.$name.'=[';
-	for ($f=0;$f<$num_rows;$f++){
+function php_to_javascript($array,$name){
+	$echo=PHP_EOL.$name.'=[';
+	foreach ($array as $fila){
 		$echo.='[';
-		for ($c=0;$c<$num_fields;$c++){
-			$echo.=($c!=$num_fields-1)?'"'.str_replace(PHP_EOL, '<br>', $array[$f][$c]).'",':'"'.str_replace(PHP_EOL, '<br>', $array[$f][$c]).'"';
+		foreach ($fila as $var){
+			$echo.='"'.str_replace(PHP_EOL, '<br>', $var).'",';
 		}
-		$echo.=($f!=$num_rows-1)?'],':']';
+		$echo=trim($echo,',').'],';
 	}
-	$echo.='];'.PHP_EOL;
+	$echo=trim($echo,',').'];'.PHP_EOL;
 	return $echo;
 }
 
