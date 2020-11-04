@@ -1,95 +1,95 @@
 .img {
-    max-width: 100%;
-    width: 100%;
-    height: 450px;
-    border-color: black;
-    border-radius: 1;
-    margin: 0 auto;
+	max-width: 100%;
+	width: 100%;
+	height: 450px;
+	border-color: black;
+	border-radius: 1;
+	margin: 0 auto;
 }
 
 form {
-    text-align: center;
-    padding: 60px;
-    max-width: 400px;
-    margin: 0 auto;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-    -webkit-box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
-    -moz-box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
-    box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
+	text-align: center;
+	padding: 60px;
+	max-width: 600px;
+	margin: 0 auto;
+	margin-bottom: 3rem;
+	margin-top: 2rem;
+	-webkit-box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
+	-moz-box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
+	box-shadow: 2px 4px 14px 0px rgba(230, 57, 70, 1);
 }
 
 select {
-    border-color: black;
+	border-color: black;
 }
 
 input {
-    border-color: black;
+	border-color: black;
 }
 
 button {
-    border-color: black;
-    border-radius: 2em;
+	border-color: black;
+	border-radius: 2em;
 }
 
 footer {
-    background-color: black;
-    color: white;
-    text-align: center;
+	background-color: black;
+	color: white;
+	text-align: center;
 }
 
 .titulo {
-    color: black;
-    text-align: center;
-    border-color: black;
-    border-radius: 2em;
-    margin-top: 1rem;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif !important;
+	color: black;
+	text-align: center;
+	border-color: black;
+	border-radius: 2em;
+	margin-top: 1rem;
+	font-weight: 700;
+	font-family: 'Roboto', sans-serif !important;
 }
 
 .espacio {
-    letter-spacing: 3px;
+	letter-spacing: 3px;
 }
 
 .doble {
-    height: 2px;
-    background-color: white;
-    border: 2px solid green;
-    outline: 2px solid black;
+	height: 2px;
+	background-color: white;
+	border: 2px solid green;
+	outline: 2px solid black;
 }
 
 #matv {
-    color: green;
+	color: green;
 }
 
 .hr-index {
-    color: black;
-    background-color: #e63946;
-    max-width: 50%;
-    border: 2px solid #e63946;
+	color: black;
+	background-color: #e63946;
+	max-width: 50%;
+	border: 2px solid #e63946;
 }
 
 .todavia-no {
-    font-size: 1rem;
-    color: #e63946;
-    text-decoration: none;
+	font-size: 1rem;
+	color: #e63946;
+	text-decoration: none;
 }
 
 .todavia-no:hover {
-    color: red;
-    text-decoration: none;
+	color: red;
+	text-decoration: none;
 }
 
 .footer-mati {
-    background-color: #e63946;
-    padding: 2rem;
+	background-color: #e63946;
+	padding: 2rem;
 }
 
 .texto-footer {
-    font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
 .seleccion-materia {
-    font-size: 5rem !important;
+	font-size: 5rem !important;
 }

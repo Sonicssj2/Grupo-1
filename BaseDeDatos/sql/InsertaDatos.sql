@@ -20,36 +20,39 @@ INSERT INTO `materias` (`id_materia`, `nombre_materia`, `icono_materia`, `descri
 
 TRUNCATE TABLE recursos;
 INSERT INTO `recursos` (`id_recurso`, `ruta_recurso`, `nombre_recurso`, `tipo_recurso`) VALUES
-(1, '../Archivos/test_PROGRAMA.pdf', 'test_PROGRAMA', 'PROGRAMA'),
-(2, '../Archivos/test_TEORÍA.pdf', 'test_TEORÍA', 'TEORÍA'),
-(3, '../Archivos/test_TRABAJO_PRÁCTICO.pdf', 'test_TRABAJO_PRÁCTICO', 'TRABAJO PRÁCTICO'),
-(4, '../Archivos/test_NOTA.pdf', 'test_NOTA', 'NOTA'),
-(5, '../Archivos/test_ENLACE.pdf', 'test_ENLACE', 'ENLACE'),
+(1, '../Recursos/test_PROGRAMA.pdf', 'test_PROGRAMA', 'PROGRAMA'),
+(2, '../Recursos/test_TEORÍA.pdf', 'test_TEORÍA', 'TEORÍA'),
+(3, '../Recursos/test_TRABAJO_PRÁCTICO.pdf', 'test_TRABAJO_PRÁCTICO', 'TRABAJO PRÁCTICO'),
+(4, '../Recursos/test_NOTA.pdf', 'test_NOTA', 'NOTA'),
+(5, '../Recursos/test_ENLACE.pdf', 'test_ENLACE', 'ENLACE'),
 (6, 'https://es.wikipedia.org/wiki/Wikipedia:Portada', 'Wikipedia', 'ENLACE');
 
 TRUNCATE TABLE usuarios_materias;
 INSERT INTO `usuarios_materias` (`numero_documento`, `id_materia`) VALUES
 (2597715, 1),
+(2597715, 2),
+(3596214, 1),
 (3596214, 2),
 (5568213, 3),
+(5568213, 4),
+(43954297, 3),
 (43954297, 4),
 (41647242, 5),
+(41647242, 6),
+(44646612, 5),
 (44646612, 6);
 
 TRUNCATE TABLE materias_recursos;
 INSERT INTO `materias_recursos` (`id_materia`, `id_recurso`) VALUES
 (1, 1),
+(1, 2),
 (2, 2),
+(2, 3),
 (3, 3),
+(3, 4),
 (4, 4),
+(4, 5),
 (5, 5),
+(5, 6),
+(6, 1),
 (6, 6);
-
-/*Añadir relaciones*/
-ALTER TABLE `materias_recursos`
-  ADD CONSTRAINT `materias_recursos_ibfk_1` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id_materia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `materias_recursos_ibfk_2` FOREIGN KEY (`id_recurso`) REFERENCES `recursos` (`id_recurso`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `usuarios_materias`
-  ADD CONSTRAINT `usuarios_materias_ibfk_1` FOREIGN KEY (`numero_documento`) REFERENCES `usuarios` (`numero_documento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuarios_materias_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id_materia`) ON DELETE CASCADE ON UPDATE CASCADE;

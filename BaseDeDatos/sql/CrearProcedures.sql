@@ -44,7 +44,7 @@ END//
 
 
 DROP PROCEDURE IF EXISTS SeleccionarNombreMaterias//
-CREATE PROCEDURE SeleccionarMaterias (IN vNumeroDocumento INT)
+CREATE PROCEDURE SeleccionarNombreMaterias (IN vNumeroDocumento INT)
 BEGIN
 	SELECT nombre_materia
 	FROM materias
@@ -53,8 +53,8 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS SeleccionarRecursos//
-CREATE PROCEDURE SeleccionarRecursos (IN vIdMateria INT)
+DROP PROCEDURE IF EXISTS SeleccionarRecursosPorMateria//
+CREATE PROCEDURE SeleccionarRecursosPorMateria (IN vIdMateria INT)
 BEGIN
 	SELECT ruta_recurso,nombre_recurso,tipo_recurso
 	FROM recursos
@@ -63,10 +63,10 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS SeleccionarRuta//
-CREATE PROCEDURE SeleccionarRuta (IN vRutaRecurso VARCHAR(50))
+DROP PROCEDURE IF EXISTS SeleccionarRecursoPorRuta//
+CREATE PROCEDURE SeleccionarRecursoPorRuta (IN vRutaRecurso VARCHAR(200))
 BEGIN
-	SELECT ruta_recurso
+	SELECT id_recurso,ruta_recurso
 	FROM recursos
 	WHERE ruta_recurso LIKE vRutaRecurso;
 END//
@@ -74,7 +74,7 @@ END//
 
 
 DROP PROCEDURE IF EXISTS InsertarRecursos//
-CREATE PROCEDURE InsertarRecursos (IN vRutaRecurso VARCHAR(50),IN vNombreRecurso VARCHAR(50),IN vTipoRecurso VARCHAR(16))
+CREATE PROCEDURE InsertarRecursos (IN vRutaRecurso VARCHAR(200),IN vNombreRecurso VARCHAR(50),IN vTipoRecurso VARCHAR(16))
 BEGIN
 	INSERT INTO recursos(ruta_recurso,nombre_recurso,tipo_recurso)
 	VALUES (vRutaRecurso,vNombreRecurso,vTipoRecurso);
@@ -82,12 +82,20 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS InsertarMateriasRecursos//
-CREATE PROCEDURE InsertarMateriasRecursos (IN vRutaRecurso VARCHAR(50),IN vNombreRecurso VARCHAR(50),IN vTipoRecurso VARCHAR(16))
+DROP PROCEDURE IF EXISTS InsertarMateriasRecursos1//
+CREATE PROCEDURE InsertarMateriasRecursos1 (IN vIdMateria INT)
 BEGIN
-	UPDATE recursos
-	SET ruta_recurso=vRutaRecurso, nombre_recurso=vNombreRecurso, tipo_recurso=vTipoRecurso
-	WHERE ruta_recurso LIKE vRutaRecurso;
+	INSERT INTO materias_recursos
+	VALUES (vIdMateria,(SELECT MAX(id_recurso) FROM recursos));
+END//
+
+
+
+DROP PROCEDURE IF EXISTS InsertarMateriasRecursos2//
+CREATE PROCEDURE InsertarMateriasRecursos2 (IN vIdMateria INT,IN vIdRecurso INT)
+BEGIN
+	INSERT INTO materias_recursos
+	VALUES (vIdMateria,vIdRecurso);
 END//
 
 

@@ -25,7 +25,7 @@ CREATE TABLE `materias` (
 
 CREATE TABLE `recursos` (
   `id_recurso` int(11) NOT NULL,
-  `ruta_recurso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `ruta_recurso` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_recurso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_recurso` varchar(16) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

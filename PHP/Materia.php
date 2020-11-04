@@ -1,14 +1,10 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);//ELIMINAR NOTICE DEL SERVIDOR.
+require 'funciones.php';
 
-require 'functions.php';
+require 'redireccionar.php';
 
-require 'materia_redirect.php';
-
-require 'querys.php';
-
-var_dump($recursos);
+require 'consultas.php';
 
 ?>
 
@@ -29,7 +25,7 @@ var_dump($recursos);
 			<div class="container">
 				<div class="row">
 					<div class="input-field s6">
-						<h1 align="center" id="ancla">SECCIÓN DE MATERIAS</h1>
+						<h1 align="center">SECCIÓN DE MATERIAS</h1>
 						<div>TIPO DE USUARIO:</div>
 						<hr>
 						<div>OPERACIONES EN EL SITIO:</div><br>
@@ -37,21 +33,21 @@ var_dump($recursos);
 
 							<!--Sección de Materia-->
 							<h5>Materia:</h5>
-							<form method="POST" action="Materia.php?sid=<?=$sid?>#ancla" id="materia_form">
+							<form method="POST" action="Materia.php?sid=<?=$sid?>" id="materia_form">
 								<select class="browser-default waves-effect waves-light" id="materia" name="materia" onchange="document.getElementById('materia_form').submit()">
 									<option value="">Seleccione una materia</option>
 									
-									<?php require 'materia_select_options.php';?>
+									<?php require 'opciones_select.php';?>
 									
 								</select><br>
 
-								<?php require 'materia_desc.php';?>
+								<?php require 'descripcion_materia.php';?>
 
 							</form>
 							<!--Fin de Sección de Materia-->
 
 							<!--Sección de Recurso-->
-							<form onsubmit="return subir_archivo(document.getElementById('materia_recurso').value)" method="POST" action="subir_recurso.php" enctype="multipart/form-data">
+							<form onsubmit="return subir_archivo(document.getElementById('materia_recurso').value)" method="POST" action="subir_recursos.php" enctype="multipart/form-data">
 								<table class="centered">
 									<caption><h5><u>Recurso</u></h5></caption>
 									<tr>
@@ -88,7 +84,7 @@ var_dump($recursos);
 							<!--Sección de  Tabla recurso-->
 							<table class="centered" id="recurso_table" name="recurso_table">
 
-								<?php require 'recursos_table.php';?>
+								<?php require 'tabla_recursos.php';?>
 
 							</table>
 							<!--Fin de Sección de Tabla recurso-->
