@@ -1,6 +1,6 @@
 <?php
 
-require 'funciones.php';
+require 'AccesoADatos.php';
 
 //variables
 $nombre="'$_POST[nombre]'";
@@ -12,14 +12,11 @@ $curso=$_POST['curso'];
 $division=$_POST['division'];
 $email="'$_POST[email]'";
 
-//respuesta de query
-$rs_select=connect("CALL SeleccionarNumeroDocumento($numero_documento_post)");
+//se instancia el objeto de conexion y se ejecuta la consulta
+$conexion=new conexion(H,U,P,D,"CALL SeleccionarNumeroDocumento($numero_documento_post)");
 
 //variable de query
-$numero_documento=mysqli_fetch_row($rs_select);
-
-//respuesta liberada
-mysqli_free_result($rs_select);
+$numero_documento=$conexion->fetch();
 
 //si $numero_documento es NULL significa que el usuario no esta registrado, de lo contrario, no se llevara a cabo el
 //INSERT

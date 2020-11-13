@@ -6,7 +6,7 @@ session_start();
 //guarda la id de la sesion
 $sid=session_id();
 
-require 'funciones.php';
+require 'AccesoADatos.php';
 
 //variables
 $numero_documento=$_POST['numero_documento'];
@@ -14,18 +14,16 @@ $numero_documento=$_POST['numero_documento'];
 //variable de sesion
 $_SESSION["numero_documento"]=$numero_documento;
 
-//respuesta de query
-$rs=connect("CALL SeleccionarContraseña($numero_documento)");
+
+//se instancia el objeto de conexion y se ejecuta la consulta
+$conexion=new conexion(H,U,P,D,"CALL SeleccionarContraseña($numero_documento)");
 
 //variable de query
-$contraseña=mysqli_fetch_row($rs);
-
-//respuesta liberada
-mysqli_free_result($rs);
+$contraseña=$conexion->fetch();
 
 //verifica que la contraseña del usuario ingresado es correcta
 if($contraseña!=NULL){
-	if($contraseña[0]==$_POST['contraseña']){
+	if($contraseña[0][0]==$_POST['contraseña']){
 		header("location:Materia.php?sid=$sid");
 	}
 	else{

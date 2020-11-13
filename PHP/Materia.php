@@ -1,5 +1,7 @@
 <?php
 
+require 'AccesoADatos.php';
+
 require 'funciones.php';
 
 require 'redireccionar.php';
