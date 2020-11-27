@@ -10,13 +10,15 @@ require 'AccesoADatos.php';
 
 //variables
 $numero_documento=$_POST['numero_documento'];
+$tipo_documento=$_POST['tipo_documento'];
 
 //variable de sesion
 $_SESSION["numero_documento"]=$numero_documento;
+$_SESSION["tipo_documento"]=$$tipo_documento=$_POST['tipo_documento'];
 
 
 //se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarContraseña($numero_documento)");
+$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarContraseña($numero_documento,'$tipo_documento')");
 $conexion->connect();
 $conexion->query();
 

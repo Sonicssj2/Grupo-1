@@ -2,12 +2,13 @@
 
 //variable de sesion
 $numero_documento=$_SESSION['numero_documento'];
+$tipo_documento=$_SESSION['tipo_documento'];
 
 //variable de POST
 $materia_post=($_POST!=NULL)?$_POST['materia']:"";
 
 //se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarMaterias($numero_documento)");
+$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarMaterias($numero_documento,'$tipo_documento')");
 $conexion->connect();
 $conexion->query();
 

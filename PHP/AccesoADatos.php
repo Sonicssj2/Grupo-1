@@ -26,13 +26,13 @@ class AccesoADatos {
 
 	function connect(){
 		if(!$this->link=mysqli_connect($this->db_host,$this->db_username,$this->db_password,$this->db_database)){
-			die('Error de Conexión:'.mysqli_connect_error());
+			die('Error de Conexión: '.mysqli_connect_error());
 		}
 	}
 
 	function query(){
 		if(!$this->rs=mysqli_query($this->link,$this->query)){
-			die('Error de Consulta:'.mysqli_error($this->link));
+			die('Error de Consulta: '.mysqli_error($this->link));
 		}
 	}
 

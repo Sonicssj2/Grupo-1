@@ -5,17 +5,17 @@ DELIMITER //
 
 
 DROP PROCEDURE IF EXISTS SeleccionarContraseña//
-CREATE PROCEDURE SeleccionarContraseña (IN vNumeroDocumento INT)
+CREATE PROCEDURE SeleccionarContraseña (IN vNumeroDocumento INT,IN VTipoDocumento VARCHAR(3))
 BEGIN
 	SELECT contraseña
 	FROM usuarios
-	WHERE numero_documento=vNumeroDocumento;
+	WHERE numero_documento=vNumeroDocumento AND tipo_documento LIKE VTipoDocumento;
 END//
 
 
 
 DROP PROCEDURE IF EXISTS SeleccionarNumeroDocumento//
-CREATE PROCEDURE SeleccionarNumeroDocumento (IN vNumeroDocumento INT,IN VTipoDocumento INT)
+CREATE PROCEDURE SeleccionarNumeroDocumento (IN vNumeroDocumento INT,IN VTipoDocumento VARCHAR(3))
 BEGIN
 	SELECT numero_documento
 	FROM usuarios
@@ -34,21 +34,11 @@ END//
 
 
 DROP PROCEDURE IF EXISTS SeleccionarMaterias//
-CREATE PROCEDURE SeleccionarMaterias (IN vNumeroDocumento INT)
+CREATE PROCEDURE SeleccionarMaterias (IN vNumeroDocumento INT,IN VTipoDocumento VARCHAR(3))
 BEGIN
 	SELECT *
 	FROM materias
-	WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento);
-END//
-
-
-
-DROP PROCEDURE IF EXISTS SeleccionarNombreMaterias//
-CREATE PROCEDURE SeleccionarNombreMaterias (IN vNumeroDocumento INT)
-BEGIN
-	SELECT nombre_materia
-	FROM materias
-	WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento);
+	WHERE id_materia IN (SELECT id_materia FROM usuarios_materias WHERE numero_documento=vNumeroDocumento AND tipo_documento LIKE VTipoDocumento);
 END//
 
 
@@ -66,7 +56,7 @@ END//
 DROP PROCEDURE IF EXISTS SeleccionarRecursoPorRuta//
 CREATE PROCEDURE SeleccionarRecursoPorRuta (IN vRutaRecurso VARCHAR(200))
 BEGIN
-	SELECT id_recurso,ruta_recurso
+	SELECT id_recurso
 	FROM recursos
 	WHERE ruta_recurso LIKE vRutaRecurso;
 END//
@@ -82,8 +72,8 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS InsertarMateriasRecursos1//
-CREATE PROCEDURE InsertarMateriasRecursos1 (IN vIdMateria INT)
+DROP PROCEDURE IF EXISTS InsertarUltimoRegistro//
+CREATE PROCEDURE InsertarUltimoRegistro (IN vIdMateria INT)
 BEGIN
 	INSERT INTO materias_recursos
 	VALUES (vIdMateria,(SELECT MAX(id_recurso) FROM recursos));
@@ -91,8 +81,18 @@ END//
 
 
 
-DROP PROCEDURE IF EXISTS InsertarMateriasRecursos2//
-CREATE PROCEDURE InsertarMateriasRecursos2 (IN vIdMateria INT,IN vIdRecurso INT)
+DROP PROCEDURE IF EXISTS test//
+CREATE PROCEDURE test (IN vIdMateria INT,IN vIdRecurso INT)
+BEGIN
+	SELECT *
+	FROM materias_recursos
+	WHERE id_materia=vIdMateria AND id_recurso=vIdRecurso;
+END//
+
+
+
+DROP PROCEDURE IF EXISTS InsertarMateriasRecursos//
+CREATE PROCEDURE InsertarMateriasRecursos (IN vIdMateria INT,IN vIdRecurso INT)
 BEGIN
 	INSERT INTO materias_recursos
 	VALUES (vIdMateria,vIdRecurso);

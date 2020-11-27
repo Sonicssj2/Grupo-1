@@ -28,19 +28,19 @@ INSERT INTO `recursos` (`id_recurso`, `ruta_recurso`, `nombre_recurso`, `tipo_re
 (6, 'https://es.wikipedia.org/wiki/Wikipedia:Portada', 'Wikipedia', 'ENLACE');
 
 TRUNCATE TABLE usuarios_materias;
-INSERT INTO `usuarios_materias` (`numero_documento`, `id_materia`) VALUES
-(2597715, 1),
-(2597715, 2),
-(3596214, 1),
-(3596214, 2),
-(5568213, 3),
-(5568213, 4),
-(43954297, 3),
-(43954297, 4),
-(41647242, 5),
-(41647242, 6),
-(44646612, 5),
-(44646612, 6);
+INSERT INTO `usuarios_materias` (`numero_documento`, `tipo_documento`, `id_materia`) VALUES
+(2597715, 'LC', 1),
+(2597715, 'LC', 2),
+(3596214, 'LE', 1),
+(3596214, 'LE', 2),
+(5568213, 'LE', 3),
+(5568213, 'LE', 4),
+(43954297, 'DNI', 3),
+(43954297, 'DNI', 4),
+(41647242, 'DNI', 5),
+(41647242, 'DNI', 6),
+(44646612, 'DNI', 5),
+(44646612, 'DNI', 6);
 
 TRUNCATE TABLE materias_recursos;
 INSERT INTO `materias_recursos` (`id_materia`, `id_recurso`) VALUES
