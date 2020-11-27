@@ -16,10 +16,12 @@ $_SESSION["numero_documento"]=$numero_documento;
 
 
 //se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new conexion(H,U,P,D,"CALL SeleccionarContraseña($numero_documento)");
+$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarContraseña($numero_documento)");
+$conexion->connect();
+$conexion->query();
 
 //variable de query
-$contraseña=$conexion->fetch();
+$contraseña=$conexion->fetch(MYSQLI_NUM);
 
 //verifica que la contraseña del usuario ingresado es correcta
 if($contraseña!=NULL){

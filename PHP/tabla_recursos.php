@@ -1,15 +1,32 @@
-<?php 
+<?php
 
- //tabla de recursos
+//tabla de recursos
 if($materia_post!=""){
+	//cabecera
+	echo "<tr>";
+	for($f=1;$f<$num_fields_recursos;$f++){
+		echo "<td><b>".$cabecera[$f]->name."</b></td>";
+	}
+	echo "</tr>";
+	
+	//tabla
+	foreach($recursos as $recurso){
+		echo "
+			<tr>
+				<td><a href='$recurso[0]'>$recurso[1]</a></td>
+				<td>$recurso[2]</td>
+			</tr>
+		";
+	}
+	/*
 	//nombre de las columnas
 	echo "
 		<tr>
-			<td>PROGRAMA</td>
-			<td>TEORÍA</td>
-			<td>TRABAJOS PRÁCTICOS</td>
-			<td>NOTAS</td>
-			<td>ENLACES RELACIONADOS</td>
+			<td><b>PROGRAMA</b></td>
+			<td><b>TEORÍA</b></td>
+			<td><b>TRABAJOS PRÁCTICOS</b></td>
+			<td><b>NOTAS</b></td>
+			<td><b>ENLACES RELACIONADOS</b></td>
 		</tr>
 	";
 
@@ -39,6 +56,7 @@ if($materia_post!=""){
 		}
 		echo "</tr>";
 	}
+	*/
 }
 
 ?>

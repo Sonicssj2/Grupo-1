@@ -32,6 +32,7 @@ CREATE TABLE `recursos` (
 
 CREATE TABLE `usuarios_materias` (
   `numero_documento` int(11) NOT NULL,
+  `tipo_documento` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `id_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,7 +44,7 @@ CREATE TABLE `materias_recursos` (
 /*Añadir llaves*/
 
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`numero_documento`);
+  ADD PRIMARY KEY (`numero_documento`,`tipo_documento`);
 
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id_materia`);
@@ -52,7 +53,7 @@ ALTER TABLE `recursos`
   ADD PRIMARY KEY (`id_recurso`);
 
 ALTER TABLE `usuarios_materias`
-  ADD PRIMARY KEY (`numero_documento`,`id_materia`);
+  ADD PRIMARY KEY (`numero_documento`,`tipo_documento`,`id_materia`);
 
 ALTER TABLE `materias_recursos`
   ADD PRIMARY KEY (`id_materia`,`id_recurso`);

@@ -15,11 +15,11 @@ END//
 
 
 DROP PROCEDURE IF EXISTS SeleccionarNumeroDocumento//
-CREATE PROCEDURE SeleccionarNumeroDocumento (IN vNumeroDocumento INT)
+CREATE PROCEDURE SeleccionarNumeroDocumento (IN vNumeroDocumento INT,IN VTipoDocumento INT)
 BEGIN
 	SELECT numero_documento
 	FROM usuarios
-	WHERE numero_documento=vNumeroDocumento;
+	WHERE numero_documento=vNumeroDocumento AND tipo_documento LIKE VTipoDocumento;
 END//
 
 

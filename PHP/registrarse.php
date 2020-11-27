@@ -13,20 +13,21 @@ $division=$_POST['division'];
 $email="'$_POST[email]'";
 
 //se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new conexion(H,U,P,D,"CALL SeleccionarNumeroDocumento($numero_documento_post)");
+$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarNumeroDocumento($numero_documento_post,$tipo_documento)");
+$conexion->connect();
+$conexion->query();
 
 //variable de query
-$numero_documento=$conexion->fetch();
+$numero_documento=$conexion->fetch(MYSQLI_NUM);
 
 //si $numero_documento es NULL significa que el usuario no esta registrado, de lo contrario, no se llevara a cabo el
 //INSERT
 if ($numero_documento==NULL) {
-	if (connect("CALL InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento_post,$contraseña,$curso,$division,$email)")) {
-		echo "<p align='center'>Usuario registrado</p>";
-	}
-	else{
-		echo "<p align='center'>Error al registrar usuario</p>";
-	}
+	$conexion=new AccesoADatos(H,U,P,D,"CALL InsertarUsuarios($nombre,$apellido,$tipo_documento,$numero_documento_post,$contraseña,$curso,$division,$email)");
+	$conexion->connect();
+	$conexion->query();
+
+	echo "<p align='center'>Usuario registrado</p>";
 }
 else {
 	echo "<p align='center'>Usuario existente</p>";

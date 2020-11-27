@@ -4,11 +4,8 @@ function redirect($sref,$refs){
 	$return=false;
 	foreach ($refs as $ref) {
 		if($ref==$sref){
-			$return+=true;
+			$return=true;
 			break;
-		}
-		else{
-			$return+=false;
 		}
 	}
 
