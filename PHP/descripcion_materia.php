@@ -2,11 +2,11 @@
 
 //se genera la descripcion de la materia
 if($materia_post!=""){
-	for($f=0;$f<$num_rows_materias;$f++){
-		if($materias[$f][0]==$materia_post){
-			$nom=$materias[$f][1];
-			$rut=$materias[$f][2];
-			$des=str_replace(PHP_EOL, "<br>", $materias[$f][3]);
+	foreach($materias as $materia){
+		if($materia[0]==$materia_post){
+			$nom=$materia[1];
+			$rut=$materia[2];
+			$des=str_replace(PHP_EOL, "<br>", $materia[3]);
 			break;
 		}
 	}

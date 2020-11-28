@@ -1,7 +1,5 @@
 <?php
 
-require 'AccesoADatos.php';
-
 //variables
 $nombre=$_POST['nombre'];
 $apellido=$_POST['apellido'];
@@ -12,20 +10,19 @@ $curso=$_POST['curso'];
 $division=$_POST['division'];
 $email=$_POST['email'];
 
-//se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarNumeroDocumento($numero_documento_post,'$tipo_documento')");
-$conexion->connect();
-$conexion->query();
+require 'AccesoADatos.php';
+
+//se ejecuta la consulta
+$conexion->query("CALL SeleccionarNumeroDocumento($numero_documento_post,'$tipo_documento')");
 
 //variable de query
-$numero_documento=$conexion->fetch(MYSQLI_NUM);
+$numero_documento=$conexion->fetch();
 
 //si $numero_documento es NULL significa que el usuario no esta registrado, de lo contrario, no se llevara a cabo el
 //INSERT
 if ($numero_documento==NULL) {
-	$conexion=new AccesoADatos(H,U,P,D,"CALL InsertarUsuarios('$nombre','$apellido','$tipo_documento',$numero_documento_post,'$contraseña',$curso,$division,'$email')");
-	$conexion->connect();
-	$conexion->query();
+	//se ejecuta la consulta
+	$conexion->query("CALL InsertarUsuarios('$nombre','$apellido','$tipo_documento',$numero_documento_post,'$contraseña',$curso,$division,'$email')");
 
 	echo "<p align='center'>Usuario registrado</p>";
 }

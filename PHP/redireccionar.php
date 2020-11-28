@@ -9,7 +9,15 @@ $refs=[
 ];
 
 //si se accede a materia con $_SERVER['HTTP_REFERER'] distinto de todos los elmentos de $refs, se redirecciona a index.htm
-if(!redirect($_SERVER['HTTP_REFERER'],$refs)){
+$redirect=true;
+foreach ($refs as $ref) {
+	if($ref==$_SERVER['HTTP_REFERER']){
+		$redirect=false;
+		break;
+	}
+}
+
+if($redirect){
 	header("location:../Paginas/index.htm");
 }
 

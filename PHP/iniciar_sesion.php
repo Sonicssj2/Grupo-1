@@ -6,8 +6,6 @@ session_start();
 //guarda la id de la sesion
 $sid=session_id();
 
-require 'AccesoADatos.php';
-
 //variables
 $numero_documento=$_POST['numero_documento'];
 $tipo_documento=$_POST['tipo_documento'];
@@ -16,14 +14,13 @@ $tipo_documento=$_POST['tipo_documento'];
 $_SESSION["numero_documento"]=$numero_documento;
 $_SESSION["tipo_documento"]=$$tipo_documento=$_POST['tipo_documento'];
 
+require 'AccesoADatos.php';
 
-//se instancia el objeto de conexion y se ejecuta la consulta
-$conexion=new AccesoADatos(H,U,P,D,"CALL SeleccionarContraseña($numero_documento,'$tipo_documento')");
-$conexion->connect();
-$conexion->query();
+//se ejecuta la consulta
+$conexion->query("CALL SeleccionarContraseña($numero_documento,'$tipo_documento')");
 
 //variable de query
-$contraseña=$conexion->fetch(MYSQLI_NUM);
+$contraseña=$conexion->fetch();
 
 //verifica que la contraseña del usuario ingresado es correcta
 if($contraseña!=NULL){
